@@ -8,17 +8,26 @@ app = Flask(__name__, template_folder='views')
 # define route for the root URL
 @app.route('/')
 def hello_world():
-    return render_template('main.html')
+    # render halaman utama menggunakan main.html dan kirimkan title
+    return render_template('main.html', title='Home')
 
 # define route untuk about
 @app.route('/about')
 def about():
-    return render_template('about.html')
-   
-   # define route untuk contact
+    return render_template('about.html', title='About')
+
+# define route untuk contact
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', title='Contact')
+
+
+@app.route('/home')
+def home():
+    # juga layani /home ke halaman utama
+    return render_template('main.html', title='Home')
+
+  
 
 # run the app
 if __name__ == '__main__':
